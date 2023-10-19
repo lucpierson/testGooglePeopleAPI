@@ -34,12 +34,12 @@ def main():
         service = build('people', 'v1', credentials=creds)
 
         # Call the People API 
-        print('List 10 connection names')
+        print('>>>>>>>> List 10 connection names')
         results = service.people().connections().list(
             resourceName='people/me',
             pageSize=10,
             personFields='names,emailAddresses').execute()
-        print(str(results))
+        #print(str(results))
         connections = results.get('connections', [])        
         for data in connections:
             for email in data["emailAddresses"]:
@@ -48,7 +48,7 @@ def main():
 
         # Call the People API to add a new contact
         # Contact data structure : https://developers.google.com/resources/api-libraries/documentation/people/v1/python/latest/people_v1.people.html
-        print('Add  new contact John Duschmol')
+        print('\n >>>>>>>> Add  new contact John Duschmol')
         new_contact = {
                     'names': [
                         {
@@ -87,18 +87,14 @@ def main():
                     ]
                 }
         result = service.people().createContact(body=new_contact).execute()
-        print('New Contact created >>>', result)
+        print('\n>>>>>>>>New Contact created >>>', result)
 
         #
         # --- now delete this new entry
         #
         resourceName = result['resourceName']
-        print("ResourceName to delete " + resourceName)
+        print("\n>>>>>>>> DELETE ResourceName  " + resourceName)
         result = service.people().deleteContact(resourceName=resourceName)
-        print(str(result))
-
-
-
 
     except Exception as err:
         print(err)
