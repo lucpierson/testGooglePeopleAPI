@@ -1,6 +1,7 @@
 # testGooglePeopleAPI
-Test how to use the People API from Google to manipulate my account's contacts. 
-Guide to setup you OAuth consent : https://developers.google.com/people/quickstart/python
+Test how to use the People API from Google to manipulate my account's contacts.
+
+Guide to setup you' OAuth consent : https://developers.google.com/people/quickstart/python
 
 # Install
 
