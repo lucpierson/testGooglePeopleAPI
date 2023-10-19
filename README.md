@@ -8,8 +8,8 @@ Guide to setup you OAuth consent : https://developers.google.com/people/quicksta
 - Add your credentials.json you've downloaded from your OAuth configuration.
 - Then:
 ```
-pip install -r requirements.txt
-python main.py
+> pip install -r requirements.txt
+> python main.py
 List 10 connection names
         contact@test1.fr
         contact@test2.fr
