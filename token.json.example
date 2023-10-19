@@ -1,0 +1,4 @@
+FOR INFO ONLY
+token.json FILE WILL BE CREATED BY THE SCRIPT.
+REMOVE IT TO GET A NEW AUTHENTICATION PROCESS TO BE TRIGGERED
+{"token": "YOUR TOKEN HERE", "refresh_token": "YOUR VALUE HERE", "token_uri": "https://oauth2.googleapis.com/token", "client_id": "YOUR CLIENT ID HERE.apps.googleusercontent.com", "client_secret": "YOUR CLIENT SECRET HERE", "scopes": ["https://www.googleapis.com/auth/contacts"], "expiry": "THE EXPIRATION DATE HERE"}
