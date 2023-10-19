@@ -9,6 +9,7 @@ Guide to setup you OAuth consent : https://developers.google.com/people/quicksta
 - Then:
 ```
 > pip install -r requirements.txt
+...
 > python main.py
 List 10 connection names
         contact@test1.fr
