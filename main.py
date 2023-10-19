@@ -33,16 +33,72 @@ def main():
     try:
         service = build('people', 'v1', credentials=creds)
 
-        # Call the People API
+        # Call the People API 
         print('List 10 connection names')
         results = service.people().connections().list(
             resourceName='people/me',
             pageSize=10,
             personFields='names,emailAddresses').execute()
+        print(str(results))
         connections = results.get('connections', [])        
         for data in connections:
             for email in data["emailAddresses"]:
                 print("\t" + email["value"])
+
+
+        # Call the People API to add a new contact
+        # Contact data structure : https://developers.google.com/resources/api-libraries/documentation/people/v1/python/latest/people_v1.people.html
+        print('Add  new contact John Duschmol')
+        new_contact = {
+                    'names': [
+                        {
+                            'displayName': 'John Duschmol'
+                        }
+                    ],
+                    'emailAddresses': [
+                        {
+                            'value': 'john.duschmol@temlab.fr',
+                            "type": "home"
+                        }
+                    ],
+                    "addresses": [
+                        { 
+                        "city": "Courgent",
+                        "countryCode": "FR",
+                        "region": "Yvelines, Ile de France",
+                        "poBox": "26",
+                        "streetAddress": "rue des Grouettes",
+                        "country": "France",
+                        "postalCode": "78790",
+                        "type": "work"
+                        }
+                    ],
+                    "phoneNumbers": [
+                        {
+                        "type": "work",
+                        "value": "+33766886312",
+                        "metadata": {"primary": True},
+                        },
+                        {
+                        "type": "home",
+                        "value": "+33766886312",
+                        "metadata": {"primary": False},
+                        },
+                    ]
+                }
+        result = service.people().createContact(body=new_contact).execute()
+        print('New Contact created >>>', result)
+
+        #
+        # --- now delete this new entry
+        #
+        resourceName = result['resourceName']
+        print("ResourceName to delete " + resourceName)
+        result = service.people().deleteContact(resourceName=resourceName)
+        print(str(result))
+
+
+
 
     except Exception as err:
         print(err)
